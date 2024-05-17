@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('title','Indo Greenlife Harvest')
 @section('content')
-<!--begin::Page-->
-<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
-@include('layouts.header')
     <!--begin::Wrapper-->
     <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
         <!--begin::Toolbar-->
@@ -2396,6 +2393,4 @@
         <!--end::Wrapper container-->
     </div>
     <!--end::Wrapper-->
-</div>
-<!--end::Page-->
 @endsection
