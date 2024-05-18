@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Carbon\Carbon;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -29,7 +31,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $user = User::where('id',Auth::user()->id)->first();
+        $user->last_login = Carbon::now();
+        $user->update();
+
+        return redirect('/');
     }
 
     /**

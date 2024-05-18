@@ -2503,33 +2503,6 @@ var KTAppLayoutBuilder = function() {
 KTUtil.onDOMContentLoaded((function() {
     KTAppLayoutBuilder.init()
 }));
-var KTLayoutSearch = function() {
-    var e, t, n, i, r, o, a, l, s, u, d, c, m = function(e) {
-            setTimeout((function() {
-                var i = KTUtil.getRandomInt(1, 3);
-                t.classList.add("d-none"), 3 === i ? (n.classList.add("d-none"), r.classList.remove("d-none")) : (n.classList.remove("d-none"), r.classList.add("d-none")), e.complete()
-            }), 1500)
-        },
-        f = function(e) {
-            t.classList.remove("d-none"), n.classList.add("d-none"), r.classList.add("d-none")
-        };
-    return {
-        init: function() {
-            (e = document.querySelector("#kt_header_search")) && (i = e.querySelector('[data-kt-search-element="wrapper"]'), e.querySelector('[data-kt-search-element="form"]'), t = e.querySelector('[data-kt-search-element="main"]'), n = e.querySelector('[data-kt-search-element="results"]'), r = e.querySelector('[data-kt-search-element="empty"]'), o = e.querySelector('[data-kt-search-element="preferences"]'), a = e.querySelector('[data-kt-search-element="preferences-show"]'), l = e.querySelector('[data-kt-search-element="preferences-dismiss"]'), s = e.querySelector('[data-kt-search-element="advanced-options-form"]'), u = e.querySelector('[data-kt-search-element="advanced-options-form-show"]'), d = e.querySelector('[data-kt-search-element="advanced-options-form-cancel"]'), e.querySelector('[data-kt-search-element="advanced-options-form-search"]'), (c = new KTSearch(e)).on("kt.search.process", m), c.on("kt.search.clear", f), o && (a && a.addEventListener("click", (function() {
-                i.classList.add("d-none"), o.classList.remove("d-none")
-            })), l && l.addEventListener("click", (function() {
-                i.classList.remove("d-none"), o.classList.add("d-none")
-            }))), s && (u && u.addEventListener("click", (function() {
-                i.classList.add("d-none"), s.classList.remove("d-none")
-            })), d && d.addEventListener("click", (function() {
-                i.classList.remove("d-none"), s.classList.add("d-none")
-            }))))
-        }
-    }
-}();
-KTUtil.onDOMContentLoaded((function() {
-    KTLayoutSearch.init()
-}));
 var KTThemeModeUser = {
     init: function() {
         KTThemeMode.on("kt.thememode.change", (function() {

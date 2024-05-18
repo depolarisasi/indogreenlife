@@ -25,6 +25,11 @@
 		<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
         @yield('css')
+        <style>
+            .btn>i {
+                padding: 0px !important;
+            }
+            </style>
 		<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
 	</head>
 	<!--end::Head-->
@@ -52,14 +57,11 @@
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Vendors Javascript(used for this page only)-->
 		<script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-		<script src="{{asset('assets/plugins/custom/vis-timeline/vis-timeline.bundle.js')}}"></script>
 		<!--end::Vendors Javascript-->
-		<!--begin::Custom Javascript(used for this page only)-->
-		<script src="{{asset('assets/js/widgets.bundle.js')}}"></script>
-		<script src="{{asset('assets/js/custom/widgets.js')}}"></script>
         @yield('js')
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
+        @include('sweetalert::alert')
 	</body>
 	<!--end::Body-->
 </html>

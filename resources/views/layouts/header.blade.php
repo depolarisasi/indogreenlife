@@ -11,7 +11,7 @@
         <!--end::Header mobile toggle-->
         <!--begin::Logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
-            <a href="index.html">
+            <a href="{{url('/')}}">
                 <img alt="Logo" src="{{asset('assets/media/logos/igh-logo.png')}}" class="h-25px d-lg-none" />
                 <img alt="Logo" src="{{asset('assets/media/logos/igh-logo.png')}}" class="h-25px d-none d-lg-inline app-sidebar-logo-default theme-light-show" />
                 <img alt="Logo" src="{{asset('assets/media/logos/igh-logo.png')}}" class="h-25px d-none d-lg-inline app-sidebar-logo-default theme-dark-show" />
@@ -47,7 +47,7 @@
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a href="index.html" class="menu-link">
+                                                    <a href="{{url('/')}}" class="menu-link">
                                                         <span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
                                                             <i class="ki-outline ki-element-11 text-primary fs-1"></i>
                                                         </span>
@@ -2689,7 +2689,7 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="{{url('users')}}" >
+                                <a class="menu-link" href="{{url('user')}}" >
                                     <span class="menu-icon">
                                         <i class="ki-outline ki-rocket fs-2"></i>
                                     </span>
@@ -2725,34 +2725,16 @@
                 <div class="d-flex align-items-center align-items-stretch mx-4">
                     <!--begin::Search-->
                     <div id="kt_header_search" class="header-search d-flex align-items-center w-lg-200px" data-kt-search-keypress="true" data-kt-search-min-length="2" data-kt-search-enter="enter" data-kt-search-layout="menu" data-kt-search-responsive="lg" data-kt-menu-trigger="auto" data-kt-menu-permanent="true" data-kt-menu-placement="bottom-start">
-                        <!--begin::Tablet and mobile search toggle-->
-                        <div data-kt-search-element="toggle" class="search-toggle-mobile d-flex d-lg-none align-items-center">
-                            <div class="d-flex">
-                                <i class="ki-outline ki-magnifier fs-1"></i>
-                            </div>
-                        </div>
-                        <!--end::Tablet and mobile search toggle-->
+
                         <!--begin::Form(use d-none d-lg-block classes for responsive search)-->
-                        <form data-kt-search-element="form" class="d-none d-lg-block w-100 position-relative mb-5 mb-lg-0" autocomplete="off">
-                            <!--begin::Hidden input(Added to disable form autocomplete)-->
-                            <input type="hidden" />
-                            <!--end::Hidden input-->
-                            <!--begin::Icon-->
+                        <form class="d-none d-lg-block w-100 position-relative mb-5 mb-lg-0" autocomplete="off">
+
                             <i class="ki-outline ki-magnifier search-icon fs-2 text-gray-500 position-absolute top-50 translate-middle-y ms-5"></i>
                             <!--end::Icon-->
                             <!--begin::Input-->
-                            <input type="text" class="search-input form-control form-control ps-13" name="search" value="" placeholder="Search Order ID" data-kt-search-element="input" />
+                            <input type="text" class="search-input form-control form-control ps-13" name="search" value="" placeholder="Search Order ID" />
                             <!--end::Input-->
-                            <!--begin::Spinner-->
-                            <span class="search-spinner position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5" data-kt-search-element="spinner">
-                                <span class="spinner-border h-15px w-15px align-middle text-gray-500"></span>
-                            </span>
-                            <!--end::Spinner-->
-                            <!--begin::Reset-->
-                            <span class="search-reset btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-4" data-kt-search-element="clear">
-                                <i class="ki-outline ki-cross fs-2 fs-lg-1 me-0"></i>
-                            </span>
-                            <!--end::Reset-->
+
                         </form>
                         <!--end::Form-->
                     </div>
@@ -2978,7 +2960,7 @@
                 <div class="app-navbar-item ms-3 ms-lg-5" id="kt_header_user_menu_toggle">
                     <!--begin::Menu wrapper-->
                     <div class="cursor-pointer symbol symbol-35px symbol-md-45px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <img class="symbol symbol-circle symbol-35px symbol-md-45px" src="{{asset('assets/media/avatars/300-13.jpg')}}" alt="user" />
+                        <img class="symbol symbol-circle symbol-35px symbol-md-45px" src="{{asset(Auth::user()->foto)}}" alt="user" />
                     </div>
                     <!--begin::User account menu-->
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px" data-kt-menu="true">
@@ -2987,13 +2969,13 @@
                             <div class="menu-content d-flex align-items-center px-3">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
-                                    <img alt="Logo" src="{{asset('assets/media/avatars/300-13.jpg')}}" />
+                                    <img alt="Logo" src="{{asset(Auth::user()->foto)}}" />
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
                                 <div class="d-flex flex-column">
                                     <div class="fw-bold d-flex align-items-center fs-5">{{Auth::user()->name}}
-                                    <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">{{Auth::user()->NamaDivisi}}</span></div>
+                                    <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">{{Auth::user()->divisi}}</span></div>
                                     <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{Auth::user()->email}}</a>
                                 </div>
                                 <!--end::Username-->
@@ -3005,7 +2987,7 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5 my-1">
-                            <a href="account/settings.html" class="menu-link px-5">Pengaturan Akun</a>
+                            <a href="{{url('profile-setting')}}" class="menu-link px-5">Pengaturan Akun</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->

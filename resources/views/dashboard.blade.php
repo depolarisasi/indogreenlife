@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Indo Greenlife Harvest')
+@section('title','PT Indo Greenlife Harvest Dashboard')
 @section('content')
     <!--begin::Wrapper-->
     <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
@@ -15,7 +15,7 @@
                         <ul class="breadcrumb breadcrumb-separatorless fw-semibold">
                             <!--begin::Item-->
                             <li class="breadcrumb-item text-white fw-bold lh-1">
-                                <a href="index.html" class="text-white text-hover-primary">
+                                <a href="{{url('/')}}" class="text-white text-hover-primary">
                                     <i class="ki-outline ki-home text-white fs-3"></i>
                                 </a>
                             </li>
@@ -2364,29 +2364,7 @@
                     <!--end::Content-->
                 </div>
                 <!--end::Content wrapper-->
-                <!--begin::Footer-->
-                <div id="kt_app_footer" class="app-footer d-flex flex-column flex-md-row align-items-center flex-center flex-md-stack py-2 py-lg-4">
-                    <!--begin::Copyright-->
-                    <div class="text-gray-900 order-2 order-md-1">
-                        <span class="text-muted fw-semibold me-1">2024&copy;</span>
-                        <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
-                    </div>
-                    <!--end::Copyright-->
-                    <!--begin::Menu-->
-                    <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
-                        <li class="menu-item">
-                            <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
-                        </li>
-                    </ul>
-                    <!--end::Menu-->
-                </div>
-                <!--end::Footer-->
+               @include('layouts.footer')
             </div>
             <!--end:::Main-->
         </div>
