@@ -66,8 +66,7 @@
 								<!--end::Wrapper-->
 								<!--begin::Submit button-->
 								<div class="d-grid mb-10">
-									<button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
-										<span class="indicator-label">Log In</span>
+									<button type="submit" class="btn btn-primary"> Register
 									</button>
 								</div>
 								<!--end::Submit button-->
