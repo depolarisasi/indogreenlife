@@ -85,13 +85,7 @@
 
                             <!--begin::Card toolbar-->
                             <div class="card-toolbar">
-                                <!--begin::Toolbar-->
-                                <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
-                                    <!--begin::Add customer-->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_roles">Add Roles</button>
-                                    <!--end::Add customer-->
-                                </div>
-                                <!--end::Toolbar-->
+
 
                             </div>
                             <!--end::Card toolbar-->
@@ -99,37 +93,75 @@
                         <!--end::Card header-->
                         <!--begin::Card body-->
                         <div class="card-body pt-0">
-                            <!--begin::Table-->
-                            <div id="roles_wrapper" class="dt-container dt-bootstrap5 dt-empty-footer">
-                                <div id="" class="table-responsive">
-                                    <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable" id="roles" style="width: 1139.5px;">
 
-                                <thead>
-                                    <tr>
-                                        <th>Roles</th>
-                                        <th>Access</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($roles as $r)
-                                    <tr>
-                                        <td>{{$r->roles_name}}</td>
-                                          @php
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5 g-xl-9">
+                                <!--begin::Col-->
+                                @foreach($roles as $r)
+                                <div class="col-md-4">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush h-md-100">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>{{$r->roles_name}}</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body pt-1">
+                                            <!--begin::Users-->
+                                            {{-- <div class="fw-bold text-gray-600 mb-5">Total users with this role: 5</div> --}}
+                                            <!--end::Users-->
+                                            <!--begin::Permissions-->
+                                            <div class="d-flex flex-column text-gray-600">
+                                                @php
                                             $acc_array = explode(",",$r->roles_permission);
                                         @endphp
                                         <td>@if($r->roles_permission)
                                             @foreach($acc_array as $key => $val)
-                                            {{$access[$val]}},
+                                            <div class="d-flex align-items-center py-2">
+                                                <span class="bullet bg-primary me-3"></span>{{$access[$val]}}</div>
                                         @endforeach
-                                    @endif</td>
-                                        <td> <a href="{{url('roles/edit/'.$r->roles_id)}}" class="btn btn-sm rounded-pill btn-warning"><i class="bi bi-pencil"></i></a>
+                                    @endif
+                                            </div>
+                                            <!--end::Permissions-->
+                                        </div>
+                                        <!--end::Card body-->
+                                        <!--begin::Card footer-->
+                                        <div class="card-footer flex-wrap pt-0">
+                                            <a href="{{url('roles/edit/'.$r->roles_id)}}" class="btn btn-sm rounded-pill btn-warning"><i class="bi bi-pencil"></i></a>
                                             <button type="button" href="{{url('roles/delete/'.$r->roles_id)}}" class="deletebtn btn btn-sm rounded-pill btn-danger"><i class="bi bi-trash"></i></button></td>
-                                       </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                        </table></div>
+                                      </div>
+                                        <!--end::Card footer-->
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                                <!--end::Col-->
+                                @endforeach
+
+                                <div class="col-md-4">
+                                    <!--begin::Card-->
+                                    <div class="card h-md-100">
+                                        <!--begin::Card body-->
+                                        <div class="card-body d-flex flex-center">
+                                            <!--begin::Button-->
+                                            <button type="button" class="btn btn-clear d-flex flex-column flex-center"  data-bs-toggle="modal" data-bs-target="#kt_modal_add_roles">
+                                                <!--begin::Illustration-->
+                                                <img src="{{asset('assets/media/illustrations/sketchy-1/4.png')}}" alt="" class="mw-100 mh-150px mb-7">
+                                                <!--end::Illustration-->
+                                                <!--begin::Label-->
+                                                <div class="fw-bold fs-3 text-gray-600 text-hover-primary">Tambah Role Baru</div>
+                                                <!--end::Label-->
+                                            </button>
+                                            <!--begin::Button-->
+                                        </div>
+                                        <!--begin::Card body-->
+                                    </div>
+                                    <!--begin::Card-->
+                                </div>
+                            </div>
 
                         <!--end::Card body-->
                     </div>

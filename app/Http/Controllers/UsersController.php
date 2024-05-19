@@ -86,7 +86,9 @@ class UsersController extends Controller
 
     public function show($id)
     {
-        $show = User::where('id', $id)->first();
+        $show = User::join('roles','roles.roles_id','=','users.roles')
+        ->select('roles.roles_name','users.*')
+        ->where('id', $id)->first();
 
         return view('user.show')->with(compact('show'));
     }
@@ -103,7 +105,7 @@ class UsersController extends Controller
 
     public function update(Request $request)
     {
-        $user = User::where('id', $request->id)->first();
+        $user = User::where('email', $request->email)->first();
         $update = collect($request->all());
         $passlama = $user->password;
         $passbaru = $request->password;

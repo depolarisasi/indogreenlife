@@ -154,5 +154,34 @@
         "ordering": true,
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
            });
+
+           $(".deletebtn").on('click', function(event){
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    var href = $(this).attr('href');
+           Swal.fire({
+       title: 'Yakin untuk menghapus data ini ? ',
+       text: 'Data ini akan dihapus dan tidak dapat dikembalikan!',
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#95000c',
+       confirmButtonText: 'Ya, Hapus!',
+       cancelButtonText: 'Tidak, batalkan'
+     }).then((result) => {
+       if (result.value) {
+          window.location.href = href;
+
+       //  For more information about handling dismissals please visit
+       // https://sweetalert2.github.io/#handling-dismissals
+       } else if (result.dismiss === Swal.DismissReason.cancel) {
+         Swal.fire(
+           'Dibatalkan',
+           'Data tidak jadi dihapus',
+           'error'
+         )
+       }
+     });
+
+});
     </script>
 @endsection
