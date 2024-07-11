@@ -31,27 +31,27 @@
                     <!--begin::Breadcrumb-->
                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold">
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-white fw-bold lh-1">
-                            <a href="{{url('/')}}" class="text-white text-hover-primary">
-                                <i class="ki-outline ki-home text-white fs-3"></i>
+                        <li class="breadcrumb-item  fw-bold lh-1">
+                            <a href="{{url('/')}}" class=" text-hover-primary">
+                                <i class="ki-outline ki-home  fs-3"></i>
                             </a>
                         </li>
                         <li class="breadcrumb-item">
-                            <i class="ki-outline ki-right fs-4 text-white mx-n1"></i>
+                            <i class="ki-outline ki-right fs-4  mx-n1"></i>
                         </li>
-                        <li class="breadcrumb-item text-white fw-bold lh-1">
-                            <a href="{{url('roles')}}" class="text-white text-hover-primary">
+                        <li class="breadcrumb-item  fw-bold lh-1">
+                            <a href="{{url('roles')}}" class=" text-hover-primary">
                                 Roles
                             </a>
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <li class="breadcrumb-item">
-                            <i class="ki-outline ki-right fs-4 text-white mx-n1"></i>
+                            <i class="ki-outline ki-right fs-4  mx-n1"></i>
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-white fw-bold lh-1">Ubah Roles</li>
+                        <li class="breadcrumb-item  fw-bold lh-1">Ubah Roles</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
@@ -62,9 +62,9 @@
                     <!--begin::Page title-->
                     <div class="page-title d-flex align-items-center me-3">
                         <!--begin::Title-->
-                        <h1 class="page-heading d-flex text-white fw-bolder fs-2 flex-column justify-content-center my-0">Ubah Roles {{$edit->roles_name}}
+                        <h1 class="page-heading d-flex  fw-bolder fs-2 flex-column justify-content-center my-0">Ubah Roles {{$edit->roles_name}}
                         <!--begin::Description-->
-                        <span class="page-desc text-white opacity-50 fs-6 fw-bold pt-4">User Role dan Hak Akses</span>
+                        <span class="page-desc  opacity-50 fs-6 fw-bold pt-4">User Role dan Hak Akses</span>
                         <!--end::Description--></h1>
                         <!--end::Title-->
                     </div>

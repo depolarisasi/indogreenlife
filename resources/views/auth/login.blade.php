@@ -24,7 +24,7 @@
 				<!--begin::Body-->
 				<div class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12 p-lg-20">
 					<!--begin::Card-->
-					<div class="bg-body d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
+					<div class="bg-glass d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
 						<!--begin::Wrapper-->
 						<div class="d-flex flex-center flex-column flex-column-fluid px-lg-10 pb-15 pb-lg-20">
 							<!--begin::Form-->
@@ -34,7 +34,7 @@
 								<div class="text-center mb-11">
 									<!--begin::Title-->
 									<h1 class="text-gray-900 fw-bolder mb-3">Log In</h1>
-                                    <div class="text-gray-500 fw-semibold fs-6">
+                                    <div class="text-gray-900 fw-semibold fs-6">
                                         PT Indo Greenlife Harvest Enterprise Manufactuing System
                                     </div>
 									<!--end::Title-->

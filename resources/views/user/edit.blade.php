@@ -29,7 +29,7 @@
                 <!--begin::Toolbar wrapper-->
                 <div class="d-flex align-items-center pt-1">
                     <!--begin::Breadcrumb-->
-                    <ul class="breadcrumb breadcrumb-separatorless fw-semibold">
+                    <ul class="breadcrumb breadcrumb-separatorless fw-">
                         <!--begin::Item-->
                         <li class="breadcrumb-item text-white fw-bold lh-1">
                             <a href="{{url('/')}}" class="text-white text-hover-primary">
@@ -98,7 +98,7 @@
                                     <!--begin::Input group-->
                                     <div class="row mb-6">
                                         <!--begin::Label-->
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Profile Picture</label>
+                                        <label class="col-lg-4 col-form-label fw- fs-6">Profile Picture</label>
                                         <!--end::Label-->
                                         <!--begin::Col-->
                                         <div class="col-lg-8">
@@ -138,7 +138,7 @@
                                     <!--begin::Input group-->
                                     <div class="row mb-6">
                                         <!--begin::Label-->
-                                        <label class="col-lg-4 col-form-label required fw-semibold fs-6">Nama Lengkap</label>
+                                        <label class="col-lg-4 col-form-label required fw- fs-6">Nama Lengkap</label>
                                         <!--end::Label-->
                                         <!--begin::Col-->
                                         <div class="col-lg-8">
@@ -158,7 +158,7 @@
                                     <!--begin::Input group-->
                                     <div class="row mb-6">
                                         <!--begin::Label-->
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                        <label class="col-lg-4 col-form-label fw- fs-6">
                                             <span class="required">Email</span>
                                         </label>
                                         <!--end::Label-->
@@ -170,7 +170,7 @@
                                     </div>
                                     <div class="row mb-6">
                                         <!--begin::Label-->
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                        <label class="col-lg-4 col-form-label fw- fs-6">
                                             <span class="required">Password</span>
                                         </label>
                                         <!--end::Label-->
@@ -182,7 +182,7 @@
                                     </div>
                                     <div class="row mb-6">
                                         <!--begin::Label-->
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                        <label class="col-lg-4 col-form-label fw- fs-6">
                                             <span class="required">Konfirmasi Password</span>
                                         </label>
                                         <!--end::Label-->
@@ -194,7 +194,7 @@
                                     </div>
                                     <div class="row mb-6">
                                         <!--begin::Label-->
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                        <label class="col-lg-4 col-form-label fw- fs-6">
                                             <span class="required">Nomor Handphone</span>
                                         </label>
                                         <!--end::Label-->
@@ -207,7 +207,7 @@
 
                                     <div class="row mb-6">
                                         <!--begin::Label-->
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                        <label class="col-lg-4 col-form-label fw- fs-6">
                                             <span class="required">Nomor Induk</span>
                                         </label>
                                         <!--end::Label-->
@@ -220,7 +220,7 @@
                                     <!--begin::Input group-->
                                     <div class="row mb-6">
                                         <!--begin::Label-->
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Divisi</label>
+                                        <label class="col-lg-4 col-form-label fw- fs-6">Divisi</label>
                                         <!--end::Label-->
                                         <!--begin::Col-->
                                         <div class="col-lg-8 fv-row">
@@ -241,7 +241,7 @@
                                      <!--begin::Input group-->
                                      <div class="row mb-6">
                                         <!--begin::Label-->
-                                        <label class="col-lg-4 col-form-label fw-semibold fs-6">User Roles</label>
+                                        <label class="col-lg-4 col-form-label fw- fs-6">User Roles</label>
                                         <!--end::Label-->
                                         <div class="col-lg-8 fv-row">
                                             <select name="roles" class="form-select form-select-sm form-select-solid">
