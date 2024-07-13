@@ -130,11 +130,38 @@ class CustomerController extends Controller
         $update = collect($request->all());
         $passlama = $customer->customer_password;
         $passbaru = $request->password;
+        if ($request->customer_companylogo == '') {
+            $fileurl = '';
+            $companylogo = $customer->company_logo;
+           } else {
+           $file = $request->customer_companylogo;
+           $fileArray = ['customer_companylogo' => $file];
+           $rules = ['customer_companylogo' => 'mimes:jpeg,jpg,png|required|max:100000'];
+           $validator = Validator::make($fileArray, $rules);
+           if ($validator->fails()) {
+               // Redirect or return json to frontend with a helpful message to inform the user
+               // that the provided file was not an adFile bukan gambar
+           alert()->error('File Bukan Gambar');
+               return redirect()->back();
+           } else {
+               $img_id = mt_rand(1, 10000);
+               $fileName = $img_id.time().'.'.$file->getClientOriginalName();
+               Image::make($file)->encode('jpg', 90)->save('customercompanylogo/'.$fileName);
+               $fileurl = 'customercompanylogo/'.$fileName;
+              $companylogo = $fileurl;
 
+           }
+        }
         if (!is_null($request->password) && !is_null($request->password_confirmation)) {
             if (Hash::check($passbaru, $passlama)) {
-                $update->put('password', $customer->password);
-
+                $update->put('password', $customer->password); 
+               
+                $update->put('customer_companylogo',$companylogo);
+                 if($request->customer_status == 1){
+                    $update->put('customer_status','Draft');
+                }else {
+                    $update->put('customer_status','Publish');
+                }
                 try {
                     $customer->update($update->all());
                 } catch (QE $e) {
@@ -150,7 +177,12 @@ class CustomerController extends Controller
                 if ($request->password == $request->password_confirmation) {
                     $newpass = $request->password;
                     $update->put('password', Hash::make($passbaru));
-
+                    $update->put('customer_companylogo',$companylogo);
+                    if($request->customer_status == 1){
+                       $update->put('customer_status','Draft');
+                   }else {
+                       $update->put('customer_status','Publish');
+                   }
                     try {
                         $customer->update($update->all());
                     } catch (QE $e) {
@@ -171,7 +203,12 @@ class CustomerController extends Controller
             }
         } else {
             try {
-                $update->put('password', $customer->password);
+                $update->put('password', $customer->password);$update->put('customer_companylogo',$companylogo);
+                if($request->customer_status == 1){
+                   $update->put('customer_status','Draft');
+               }else {
+                   $update->put('customer_status','Publish');
+               }
                 $customer->update($update->all());
             } catch (QE $e) {
 
@@ -188,10 +225,10 @@ class CustomerController extends Controller
 
     public function delete($id)
     {
-        $user = User::where('id', $id)->first();
+        $customer = Customer::where('customer_uniqueid', $customer_uniqueid)->first();
 
         try {
-            $user->delete();
+            $customer->delete();
         } catch (QE $e) {
             return $e;
         } //show db error message
@@ -246,46 +283,5 @@ class CustomerController extends Controller
         Auth::logout();
         return redirect('/');
     }
-
-    public function profile_setting(){
-        $userid = Auth::user()->id;
-        $user = User::where('id',$userid)->first();
-        return view('profile-setting')->with(compact('user'));
-    }
-
-    public function profile_update(Request $request){
-        $user = User::where('id', Auth::user()->id)->first();
-        $update = collect($request->all());
-       if ($request->foto == '') {
-        $fileurl = '';
-        $update->put('foto',$user->foto);
-       } else {
-       $file = $request->foto;
-       $fileArray = ['foto' => $file];
-       $rules = ['foto' => 'mimes:jpeg,jpg,png,gif|required|max:100000'];
-       $validator = Validator::make($fileArray, $rules);
-       if ($validator->fails()) {
-           // Redirect or return json to frontend with a helpful message to inform the user
-           // that the provided file was not an adFile bukan gambar
-       alert()->error('File Bukan Gambar');
-           return redirect()->back();
-       } else {
-           $img_id = mt_rand(1, 10000);
-           $fileName = $img_id.time().'.'.$file->getClientOriginalName();
-           Image::make($file)->encode('jpg', 90)->save('fotouser/'.$fileName);
-           $fileurl = 'fotouser/'.$fileName;
-           $update->put('foto',$fileurl);
-
-       }
-       }
-        try {
-            $user->update($update->all());
-            alert()->success('Berhasil','Profile Berhasil Diubah');
-            return redirect('profile-setting');
-        } catch (QE $e) {
-        alert()->warning('Database Error');
-
-            return redirect()->back();
-        }
-    }
+ 
 }

@@ -397,7 +397,7 @@
                                             <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" aria-label="Change avatar" data-bs-original-title="Change avatar" data-kt-initialized="1">
                                                 <i class="ki-outline ki-pencil fs-7"></i>
                                                 <!--begin::Inputs-->
-                                                <input type="file" name="foto" accept=".png, .jpg, .jpeg">
+                                                <input type="file" name="customer_companylogo" accept=".png, .jpg, .jpeg">
                                                 <input type="hidden" name="foto_remove" value="1">
                                                 <!--end::Inputs-->
                                             </label>
