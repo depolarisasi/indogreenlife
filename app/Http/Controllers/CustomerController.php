@@ -19,10 +19,11 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $user = User::join('roles','roles.roles_id','=','users.roles')
-        ->select('roles.roles_name','users.*')
+        $user = User::get();
+        $customer = Customer::join('users','users.id','=','customer.customer_sales')
+        ->select('users.name','users.id','customer.*')
         ->get();
-        return view('customer.index')->with(compact('user'));
+        return view('customer.index')->with(compact('customer','user'));
     }
 
     public function create()
@@ -72,7 +73,7 @@ class CustomerController extends Controller
 
         $store->put('customer_companylogo',$companylogo);
         $store->put('customer_sales',Auth::user()->id);
-        $store->put('customer_dateadded',Carbon::now()->format('Y-m-d H:i:s'));
+        $store->put('customer_dateadded',Carbon::now()->setTimezone('Asia/Jakarta')->format('Y-m-d H:i:s'));
         if($request->customer_status == 1){
             $store->put('customer_status','Draft');
         }else {
@@ -115,34 +116,34 @@ class CustomerController extends Controller
 
     public function edit($id)
     {
-        $edit = User::join('roles','roles.roles_id','=','users.roles')
-        ->select('roles.roles_name','users.*')->where('id', $id)->first();
+        $edit = Customer::join('users','users.id','=','customer.customer_sales')
+        ->select('users.name','users.id','customer.*')->where('customer_uniqueid', $id)->first();
 
-        $roles = Roles::get();
+        $user = User::get();
 
-        return view('customer.edit')->with(compact('edit','roles'));
+        return view('customer.edit')->with(compact('edit','user'));
     }
 
     public function update(Request $request)
     {
-        $user = User::where('email', $request->email)->first();
+        $customer = Customer::where('customer_uniqueid', $request->customer_uniqueid)->first();
         $update = collect($request->all());
-        $passlama = $user->password;
+        $passlama = $customer->customer_password;
         $passbaru = $request->password;
 
         if (!is_null($request->password) && !is_null($request->password_confirmation)) {
             if (Hash::check($passbaru, $passlama)) {
-                $update->put('password', $user->password);
+                $update->put('password', $customer->password);
 
                 try {
-                    $user->update($update->all());
+                    $customer->update($update->all());
                 } catch (QE $e) {
                    alert()->warning('Database Error');
 
                     return redirect()->back();
                 }
 
-               alert()->success('Akun berhasil diubah');
+               alert()->success('Customer berhasil diubah');
 
                 return redirect('user');
             } else {
@@ -151,15 +152,15 @@ class CustomerController extends Controller
                     $update->put('password', Hash::make($passbaru));
 
                     try {
-                        $user->update($update->all());
+                        $customer->update($update->all());
                     } catch (QE $e) {
 
-                        alert()->error('Gagal','Akun Gagal Diubah');
+                        alert()->error('Gagal','Customer Gagal Diubah');
 
                         return redirect()->back();
                     }
 
-                    alert()->success('Berhasil','Akun Berhasil Dibuat');
+                    alert()->success('Berhasil','Customer Berhasil Dibuat');
 
                     return redirect('user');
                 } else {
@@ -170,18 +171,18 @@ class CustomerController extends Controller
             }
         } else {
             try {
-                $update->put('password', $user->password);
-                $user->update($update->all());
+                $update->put('password', $customer->password);
+                $customer->update($update->all());
             } catch (QE $e) {
 
-                alert()->error('Gagal','Akun Gagal Diubah');
+                alert()->error('Gagal','Customer Gagal Diubah');
 
                 return redirect()->back();
             }
-            alert()->success('Berhasil','Akun Berhasil Diubah');
+            alert()->success('Berhasil','Customer Berhasil Diubah');
 
 
-            return redirect('user');
+            return redirect('customer');
         }
     }
 
@@ -196,7 +197,7 @@ class CustomerController extends Controller
         } //show db error message
 
 
-        alert()->success('Berhasil','Akun Berhasil Dihapus');
+        alert()->success('Berhasil','Customer Berhasil Dihapus');
 
 
         return redirect('user');

@@ -179,10 +179,10 @@
                                         <!--begin::Col-->
                                         <div class="col-lg-8">
                                             <!--begin::Row-->
-                                            <div class="row">
+                                            <div np="row">
                                                 <!--begin::Col-->
                                                 <div class="col-lg-12 fv-row fv-plugins-icon-container">
-                                                    <input type="text" name="customer_npwp" maxlength="16" class="form-control form-control-lg form-control-solid" placeholder="NPWP Pribadi">
+                                                    <input type="text" name="customer_npwp" maxlength="22" class="form-control form-control-lg form-control-solid" placeholder="NPWP Pribadi">
                                                 </div>
                                                 <!--end::Col-->
 
@@ -286,7 +286,7 @@
                                             <div class="row">
                                                 <!--begin::Col-->
                                                 <div class="col-lg-12 fv-row fv-plugins-icon-container">
-                                                    <input type="text" name="customer_companynpwp" maxlength="16"  class="form-control form-control-lg form-control-solid" placeholder="NPWP Perusahaan">
+                                                    <input type="text" name="customer_companynpwp" maxlength="22"  class="form-control form-control-lg form-control-solid" placeholder="NPWP Perusahaan">
                                                 </div>
                                                 <!--end::Col-->
 

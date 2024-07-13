@@ -60,7 +60,26 @@
                     <!--begin::Content-->
                     <div id="kt_app_content" class="app-content">
                         <!--begin::Card-->
+                        @if(count($customer) == 0)
+                            <div class="card-px text-center py-20 my-10">
+            <!--begin::Title-->
+            <h2 class="fs-2x fw-bold mb-10">Customer</h2>
+            <!--end::Title-->
+
+            <!--begin::Description-->
+            <p class="text-gray-500 fs-4 fw-semibold mb-10">
+                Belum Ada Customer.<br>
+                Silahkan Lakukan Penambahan Customer
+            </p>
+            <!--end::Description-->
+
+            <!--begin::Action-->
+            <a href="{{url('customer/new')}}" class="btn btn-primary" >Add Customer</a>
+            <!--end::Action-->
+        </div>
+            @else
                         <div class="card">
+                           
                             <!--begin::Card header-->
                             <div class="card-header border-0 pt-6">
                                 <!--begin::Card title-->
@@ -68,7 +87,7 @@
                                     <!--begin::Search-->
                                     <div class="d-flex align-items-center position-relative my-1">
                                         <i class="ki-outline ki-magnifier fs-3 position-absolute ms-5"></i>
-                                        <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search user" />
+                                        <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search customer" />
                                     </div>
                                     <!--end::Search-->
                                 </div>
@@ -94,23 +113,22 @@
                                             <div class="px-7 py-5" data-kt-user-table-filter="form">
                                                 <!--begin::Input group-->
                                                 <div class="mb-10">
-                                                    <label class="form-label fs-6 fw-semibold">Role:</label>
-                                                    <select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
+                                                    <label class="form-label fs-6 fw-semibold">Type Customer:</label>
+                                                    <select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="type" data-hide-search="true">
                                                         <option></option>
-                                                        <option value="Administrator">Administrator</option>
-                                                        <option value="Analyst">Analyst</option>
-                                                        <option value="Developer">Developer</option>
-                                                        <option value="Support">Support</option>
-                                                        <option value="Trial">Trial</option>
+                                                        <option value="Perusahaan">Perusahaan</option>
+                                                        <option value="Perorangan">Perorangan</option> 
                                                     </select>
                                                 </div>
                                                 <!--end::Input group-->
                                                 <!--begin::Input group-->
                                                 <div class="mb-10">
-                                                    <label class="form-label fs-6 fw-semibold">Two Step Verification:</label>
-                                                    <select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="two-step" data-hide-search="true">
+                                                    <label class="form-label fs-6 fw-semibold">Sales:</label>
+                                                    <select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="sales" data-hide-search="true">
                                                         <option></option>
-                                                        <option value="Enabled">Enabled</option>
+                                                        @foreach($user as $u)
+                                                        <option value="{{$u->name}}">{{$u->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <!--end::Input group-->
@@ -160,16 +178,26 @@
                                                         <!--begin::Input group-->
                                                         <div class="fv-row mb-10">
                                                             <!--begin::Label-->
-                                                            <label class="fs-6 fw-semibold form-label mb-2">Select Roles:</label>
+                                                            <label class="fs-6 fw-semibold form-label mb-2">Customer Type:</label>
                                                             <!--end::Label-->
                                                             <!--begin::Input-->
                                                             <select name="role" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bold">
-                                                                <option></option>
-                                                                <option value="Administrator">Administrator</option>
-                                                                <option value="Analyst">Analyst</option>
-                                                                <option value="Developer">Developer</option>
-                                                                <option value="Support">Support</option>
-                                                                <option value="Trial">Trial</option>
+                                                            <option></option> 
+                                                        <option value="Perusahaan">Perusahaan</option>
+                                                        <option value="Perorangan">Perorangan</option> 
+                                                            </select>
+                                                            <!--end::Input-->
+                                                        </div>
+                                                          <div class="fv-row mb-10">
+                                                            <!--begin::Label-->
+                                                            <label class="fs-6 fw-semibold form-label mb-2">Sales:</label>
+                                                            <!--end::Label-->
+                                                            <!--begin::Input-->
+                                                            <select name="role" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bold">
+                                                            <option></option>
+                                                        @foreach($user as $u)
+                                                        <option value="{{$u->name}}">{{$u->name}}</option>
+                                                        @endforeach
                                                             </select>
                                                             <!--end::Input-->
                                                         </div>
@@ -184,8 +212,7 @@
                                                                 <option></option>
                                                                 <option value="excel">Excel</option>
                                                                 <option value="pdf">PDF</option>
-                                                                <option value="cvs">CVS</option>
-                                                                <option value="zip">ZIP</option>
+                                                                <option value="cvs">CVS</option> 
                                                             </select>
                                                             <!--end::Input-->
                                                         </div>
@@ -217,87 +244,97 @@
                             <!--begin::Card body-->
                             <div class="card-body py-4">
                                 <!--begin::Table-->
+                                <div class="table-responsive">
+
                                 <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
                                     <thead>
-                                        <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                            <th class="min-w-125px">Customer ID</th>
+                                        <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">  
                                             <th class="min-w-125px">Company</th>
                                             <th class="min-w-125px">Personal</th>
-                                            <th class="min-w-125px">Type</th>
-                                            <th class="min-w-125px">Sales</th>
-                                            <th class="min-w-125px">Detail</th>
-                                            <th class="min-w-125px">Tanggal Dibuat</th>
+                                            <th>Type</th>
+                                            <th>Sales</th>
+                                            <th>Detail</th> 
                                             <th class="text-end min-w-100px">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-gray-600 fw-semibold">
-                                        <tr>
-
-                                            <td>UXD2137</td>
+                                        @foreach($customer as $c)
+                                        <tr>   
                                             <td class="d-flex align-items-center">
-                                                <!--begin:: Avatar -->
-                                                <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                    <a href="#">
-                                                        <div class="symbol-label">
-                                                            <img src="{{asset('assets/media/avatars/300-6.jpg')}}" alt="Emma Smith" class="w-100" />
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <!--end::Avatar-->
+                                                
                                                 <!--begin::User details-->
                                                 <div class="d-flex flex-column">
-                                                    <a href="apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1">PT Gagah Sukses Perkasa</a>
-                                                    <span>+62812312312323</span>
-                                                    <span>smith@kpmg.com</span>
-                                                    <span>Jl Kapal Api No 23234, Cilincing, Kebayoran Lama, Jakarta Selatan</span>
-                                                    <span>NIB 8120203981285</span>
-                                                    <span>NPWP 09.254.294.3-407.000  <span class="badge badge-info fw-bold">PKP</span></span>
+                                                    {{$c->customer_company}}
+                                                    <span>{{$c->customer_companytelp}}</span>
+                                                    <span>{{$c->customer_companyemail}}</span>
+                                                    <span>{{$c->customer_companyaddress}}</span>
+                                                    <span>@if($c->customer_companynib != NULL)
+                                                        NIB {{$c->customer_companynib}}
+                                                    @endif</span>
+                                                    <span>@if($c->customer_companynpwp != NULL)
+                                                        NPWP {{$c->customer_companynpwp}} 
+                                                        @endif
+                                                        @if($c->customer_companytax == "PKP")
+                                                        <span class="badge badge-info fw-bold">PKP</span>
+                                                    @elseif($c->customer_companytax == "NON PKP")
+                                                    <span class="badge badge-info fw-bold">NON PKP</span>
+                                                @endif</span>
                                                 </div>
                                                 <!--begin::User details-->
                                             </td>
                                             <td>
                                                 <!--begin::User details-->
-                                                <div class="d-flex flex-column">
-                                                    <a href="apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
-                                                    <span>+62812312312323</span>
-                                                    <span>smith@kpmg.com</span>
-                                                    <span>Jl Kapal Api No 23234, Cilincing, Kebayoran Lama, Jakarta Selatan</span>
+                                                <div>
+                                                    {{$c->customer_name}} ({{$c->customer_uniqueid}})
                                                 </div>
                                                 <!--begin::User details-->
                                             </td>
-                                            <td><span class="badge badge-primary fw-bold">Perusahaan</span></td>
-                                            <td> <a href="apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1">PT Gagah Sukses Perkasa</a></td>
+                                            <td>@if($c->customer_type == "Perusahaan" )
+                                                <span class="badge badge-info fw-bold">Perusahaan</span>
+                                            @elseif($c->customer_type == "Perorangan")
+                                            <span class="badge badge-primary fw-bold">Perorangan</span>
+                                            @endif
+                                        </td>
+                                            <td> <a href="{{url('user/detail/'.$c->id)}}" class="text-gray-800 text-hover-primary mb-1">{{$c->name}}</a> <br>
+                                             {{\Carbon\Carbon::parse($c->customer_dateadded)->format('d M Y H:i')}}</td>
                                             <td>
-                                                <a href="{{url('user/detail/')}}" class="btn btn-xs btn-primary"><i class="bi bi-info-circle"></i> Product</a>
-                                                <a href="{{url('user/edit/')}}" class="btn btn-xs btn-warning"><i class="bi bi-info-circle"></i> Request Sample</a>
-                                                <a href="{{url('user/edit/')}}" class="btn btn-xs btn-danger"><i class="bi bi-info-circle"></i> Sales Order</a>
-                                           </td>
-                                           <td>20 Januari 2024 13:04</td>
+                                                <a href="{{url('customer/detail/')}}" class="btn btn-xs btn-primary"><i class="bi bi-info-circle"></i> Product</a>
+                                                <a href="{{url('customer/edit/')}}" class="btn btn-xs btn-warning"><i class="bi bi-info-circle"></i> Request Sample</a>
+                                                <a href="{{url('customer/edit/')}}" class="btn btn-xs btn-danger"><i class="bi bi-info-circle"></i> Sales Order</a>
+                                           </td> 
                                            <td class="text-end">
-                                                <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+                                                <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Aksi
                                                 <i class="ki-outline ki-down fs-5 ms-1"></i></a>
                                                 <!--begin::Menu-->
                                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a href="apps/user-management/users/view.html" class="menu-link px-3">Edit</a>
+                                                        <a href="{{url('customer/detail/'.$c->customer_uniqueid)}}" class="menu-link px-3">Detail</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
+                                                        <a href="{{url('customer/edit/'.$c->customer_uniqueid)}}" class="menu-link px-3">Edit</a>
+                                                    </div>
+                                                    <!--end::Menu item-->
+                                                    <!--begin::Menu item-->
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{url('customer/delete/'.$c->customer_uniqueid)}}" class="menu-link px-3">Delete</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                 </div>
                                                 <!--end::Menu-->
                                             </td>
                                         </tr>
+                                        @endforeach
 
                                     </tbody>
                                 </table>
                                 <!--end::Table-->
+                                </div>
                             </div>
                             <!--end::Card body-->
+                            @endif
                         </div>
                         <!--end::Card-->
                     </div>
@@ -314,6 +351,6 @@
 @endsection
 @section('js')
 		<!--begin::Custom Javascript(used for this page only)-->
-		<script src="{{asset('assets/js/custom/apps/user-management/users/list/table.js')}}"></script>
+		<script src="{{asset('assets/js/customer/table.js')}}"></script>
 		<script src="{{asset('assets/js/custom/apps/user-management/users/list/export-users.js')}}"></script>
 @endsection
