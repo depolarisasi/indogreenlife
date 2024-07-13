@@ -22,6 +22,16 @@ Route::get('/', function () {
 Route::get('/profile-setting',[App\Http\Controllers\UsersController::class, 'profile_setting'])->middleware('auth');
 Route::post('/profile-setting',[App\Http\Controllers\UsersController::class, 'profile_update'])->middleware('auth');
 
+Route::group(['prefix' => 'customer'], function() {
+    Route::get('/',[App\Http\Controllers\CustomerController::class, 'index'])->middleware('auth');
+    Route::get('/detail/{id}',[App\Http\Controllers\CustomerController::class, 'show'])->middleware('auth');
+    Route::get('/new',[App\Http\Controllers\CustomerController::class, 'create'])->middleware('auth');
+    Route::post('/store',[App\Http\Controllers\CustomerController::class, 'store'])->middleware('auth');
+    Route::get('/edit/{id}',[App\Http\Controllers\CustomerController::class, 'edit'])->middleware('auth');
+    Route::post('/update',[App\Http\Controllers\CustomerController::class, 'update'])->middleware('auth');
+    Route::get('/delete/{id}',[App\Http\Controllers\CustomerController::class, 'delete'])->middleware('auth');
+});
+
 Route::group(['prefix' => 'user'], function() {
     Route::get('/',[App\Http\Controllers\UsersController::class, 'index'])->middleware('auth');
     Route::get('/detail/{id}',[App\Http\Controllers\UsersController::class, 'show'])->middleware('auth');
