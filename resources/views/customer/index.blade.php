@@ -52,7 +52,7 @@
     </div>
     <!--end::Toolbar-->
     	<!--begin::Wrapper container-->
-        <div class="app-container container-fluid">
+        <div class="app-container container-xxl">
             <!--begin::Main-->
             <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
                 <!--begin::Content wrapper-->
