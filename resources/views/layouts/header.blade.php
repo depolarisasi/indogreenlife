@@ -233,45 +233,27 @@
                     </div>
                     <!--end:Menu item-->
                       <!--begin:Menu item-->
-                      <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
+                      <a href="{{url('customer')}}" class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
                         <!--begin:Menu link-->
                         <span class="menu-link">
                             <span class="menu-title">Customer</span>
                             <span class="menu-arrow d-lg-none"></span>
                         </span>
                         <!--end:Menu link-->
-                        <!--begin:Menu sub-->
-                        <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-250px">
 
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="{{url('customer/leads')}}">
-                                    <span class="menu-icon">
-                                        <i class="ki-outline ki-calendar-8 fs-2"></i>
-                                    </span>
-                                    <span class="menu-title">Leads</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                             <!--begin:Menu item-->
-                             <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="{{url('customer')}}">
-                                    <span class="menu-icon">
-                                        <i class="ki-outline ki-calendar-8 fs-2"></i>
-                                    </span>
-                                    <span class="menu-title">Clients</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-
-                        </div>
-                        <!--end:Menu sub-->
-                    </div>
+                    </a>
                     <!--end:Menu item-->
+                         <!--begin:Menu item-->
+                         <a href="{{url('sales-order')}}" class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
+                            <!--begin:Menu link-->
+                            <span class="menu-link">
+                                <span class="menu-title">Sales Order</span>
+                                <span class="menu-arrow d-lg-none"></span>
+                            </span>
+                            <!--end:Menu link-->
+
+                        </a>
+                        <!--end:Menu item-->
                      <!--begin:Menu item-->
                      <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
                         <!--begin:Menu link-->
@@ -307,6 +289,7 @@
                                 <!--end:Menu link-->
                             </div>
                             <!--end:Menu item-->
+
 
                         </div>
                         <!--end:Menu sub-->

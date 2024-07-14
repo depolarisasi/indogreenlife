@@ -21,7 +21,7 @@ class CustomerController extends Controller
     {
         $user = User::get();
         $customer = Customer::join('users','users.id','=','customer.customer_sales')
-        ->select('users.name','users.id','customer.*')
+        ->select('users.name','users.id','users.foto','customer.*')
         ->get();
         return view('customer.index')->with(compact('customer','user'));
     }
@@ -105,11 +105,11 @@ class CustomerController extends Controller
         return redirect('customer');
     }
 
-    public function show($id)
+    public function show($customer_uniqueid)
     {
-        $show = User::join('roles','roles.roles_id','=','users.roles')
-        ->select('roles.roles_name','users.*')
-        ->where('id', $id)->first();
+        $show = Customer::join('users','users.id','=','customer.customer_sales')
+        ->select('users.name','users.id','customer.*')
+        ->where('customer_uniqueid', $customer_uniqueid)->first();
 
         return view('customer.show')->with(compact('show'));
     }
@@ -154,8 +154,8 @@ class CustomerController extends Controller
         }
         if (!is_null($request->password) && !is_null($request->password_confirmation)) {
             if (Hash::check($passbaru, $passlama)) {
-                $update->put('password', $customer->password); 
-               
+                $update->put('password', $customer->password);
+
                 $update->put('customer_companylogo',$companylogo);
                  if($request->customer_status == 1){
                     $update->put('customer_status','Draft');
@@ -283,5 +283,5 @@ class CustomerController extends Controller
         Auth::logout();
         return redirect('/');
     }
- 
+
 }

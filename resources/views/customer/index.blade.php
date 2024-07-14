@@ -79,7 +79,7 @@
         </div>
             @else
                         <div class="card">
-                           
+
                             <!--begin::Card header-->
                             <div class="card-header border-0 pt-6">
                                 <!--begin::Card title-->
@@ -117,7 +117,7 @@
                                                     <select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="type" data-hide-search="true">
                                                         <option></option>
                                                         <option value="Perusahaan">Perusahaan</option>
-                                                        <option value="Perorangan">Perorangan</option> 
+                                                        <option value="Perorangan">Perorangan</option>
                                                     </select>
                                                 </div>
                                                 <!--end::Input group-->
@@ -162,7 +162,7 @@
                                                 <!--begin::Modal header-->
                                                 <div class="modal-header">
                                                     <!--begin::Modal title-->
-                                                    <h2 class="fw-bold">Export Users</h2>
+                                                    <h2 class="fw-bold">Export Customer</h2>
                                                     <!--end::Modal title-->
                                                     <!--begin::Close-->
                                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-users-modal-action="close">
@@ -182,9 +182,9 @@
                                                             <!--end::Label-->
                                                             <!--begin::Input-->
                                                             <select name="role" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bold">
-                                                            <option></option> 
+                                                            <option></option>
                                                         <option value="Perusahaan">Perusahaan</option>
-                                                        <option value="Perorangan">Perorangan</option> 
+                                                        <option value="Perorangan">Perorangan</option>
                                                             </select>
                                                             <!--end::Input-->
                                                         </div>
@@ -212,7 +212,7 @@
                                                                 <option></option>
                                                                 <option value="excel">Excel</option>
                                                                 <option value="pdf">PDF</option>
-                                                                <option value="cvs">CVS</option> 
+                                                                <option value="csv">CSV</option>
                                                             </select>
                                                             <!--end::Input-->
                                                         </div>
@@ -248,23 +248,24 @@
 
                                 <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
                                     <thead>
-                                        <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">  
+                                        <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                             <th class="min-w-125px">Company</th>
                                             <th class="min-w-125px">Personal</th>
                                             <th>Type</th>
                                             <th>Sales</th>
-                                            <th>Detail</th> 
+                                            <th>Date Added</th>
+                                            <th>Detail</th>
                                             <th class="text-end min-w-100px">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-gray-600 fw-semibold">
                                         @foreach($customer as $c)
-                                        <tr>   
+                                        <tr>
                                             <td class="d-flex align-items-center">
-                                                
+
                                                 <!--begin::User details-->
                                                 <div class="d-flex flex-column">
-                                                    {{$c->customer_company}}
+                                                    <a href="{{url('customer/detail/'.$c->customer_uniqueid)}}">{{$c->customer_company}}</a>
                                                     <span>{{$c->customer_companytelp}}</span>
                                                     <span>{{$c->customer_companyemail}}</span>
                                                     <span>{{$c->customer_companyaddress}}</span>
@@ -272,7 +273,7 @@
                                                         NIB {{$c->customer_companynib}}
                                                     @endif</span>
                                                     <span>@if($c->customer_companynpwp != NULL)
-                                                        NPWP {{$c->customer_companynpwp}} 
+                                                        NPWP {{$c->customer_companynpwp}}
                                                         @endif
                                                         @if($c->customer_companytax == "PKP")
                                                         <span class="badge badge-info fw-bold">PKP</span>
@@ -284,8 +285,13 @@
                                             </td>
                                             <td>
                                                 <!--begin::User details-->
-                                                <div>
-                                                    {{$c->customer_name}} ({{$c->customer_uniqueid}})
+                                                <div class="d-flex flex-column">
+                                                   <a href="{{url('customer/detail/'.$c->customer_uniqueid)}}">{{$c->customer_name}}</a> ({{$c->customer_uniqueid}})
+                                                    <span>{{$c->customer_nohp}}</span>
+                                                    <span>{{$c->customer_email}}</span>
+                                                    <span>{{$c->customer_address}}</span>
+                                                    <span>@if($c->customer_npwp != NULL)
+                                                        NPWP {{$c->customer_npwp}} @endif</span>
                                                 </div>
                                                 <!--begin::User details-->
                                             </td>
@@ -295,13 +301,17 @@
                                             <span class="badge badge-primary fw-bold">Perorangan</span>
                                             @endif
                                         </td>
-                                            <td> <a href="{{url('user/detail/'.$c->id)}}" class="text-gray-800 text-hover-primary mb-1">{{$c->name}}</a> <br>
-                                             {{\Carbon\Carbon::parse($c->customer_dateadded)->format('d M Y H:i')}}</td>
+                                            <td>
+                                                <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" aria-label="{{$c->name}}" data-bs-original-title="{{$c->name}}" data-kt-initialized="1">
+                                                <img alt="Pic" src="{{$c->foto}}">
+                                            </div><br>
+                                            <a href="{{url('user/detail/'.$c->id)}}" class="text-gray-800 text-hover-primary mb-1">{{$c->name}}</a></td>
+                                            <td>{{\Carbon\Carbon::parse($c->customer_dateadded)->format('d M Y H:i')}}</td>
                                             <td>
                                                 <a href="{{url('customer/detail/')}}" class="btn btn-xs btn-primary"><i class="bi bi-info-circle"></i> Product</a>
                                                 <a href="{{url('customer/edit/')}}" class="btn btn-xs btn-warning"><i class="bi bi-info-circle"></i> Request Sample</a>
                                                 <a href="{{url('customer/edit/')}}" class="btn btn-xs btn-danger"><i class="bi bi-info-circle"></i> Sales Order</a>
-                                           </td> 
+                                           </td>
                                            <td class="text-end">
                                                 <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Aksi
                                                 <i class="ki-outline ki-down fs-5 ms-1"></i></a>
