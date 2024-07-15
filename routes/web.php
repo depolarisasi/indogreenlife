@@ -32,6 +32,37 @@ Route::group(['prefix' => 'customer'], function() {
     Route::get('/delete/{id}',[App\Http\Controllers\CustomerController::class, 'delete'])->middleware('auth');
 });
 
+Route::group(['prefix' => 'product'], function() {
+    Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->middleware('auth');
+    Route::get('/detail/',[App\Http\Controllers\ProductController::class, 'show'])->middleware('auth');
+    Route::get('/new',[App\Http\Controllers\ProductController::class, 'create'])->middleware('auth');
+    Route::post('/store',[App\Http\Controllers\ProductController::class, 'store'])->middleware('auth');
+    Route::get('/edit/{id}',[App\Http\Controllers\ProductController::class, 'edit'])->middleware('auth');
+    Route::post('/update',[App\Http\Controllers\ProductController::class, 'update'])->middleware('auth');
+    Route::get('/delete/{id}',[App\Http\Controllers\ProductController::class, 'delete'])->middleware('auth');
+});
+
+Route::group(['prefix' => 'sample'], function() {
+    Route::get('/',[App\Http\Controllers\SampleController::class, 'index'])->middleware('auth');
+    Route::get('/detail/{id}',[App\Http\Controllers\SampleController::class, 'show'])->middleware('auth');
+    Route::get('/new',[App\Http\Controllers\SampleController::class, 'create'])->middleware('auth');
+    Route::post('/store',[App\Http\Controllers\SampleController::class, 'store'])->middleware('auth');
+    Route::get('/edit/{id}',[App\Http\Controllers\SampleController::class, 'edit'])->middleware('auth');
+    Route::post('/update',[App\Http\Controllers\SampleController::class, 'update'])->middleware('auth');
+    Route::get('/delete/{id}',[App\Http\Controllers\SampleController::class, 'delete'])->middleware('auth');
+});
+
+Route::group(['prefix' => 'sales-order'], function() {
+    Route::get('/',[App\Http\Controllers\SalesOrderController::class, 'index'])->middleware('auth');
+    Route::get('/detail/{id}',[App\Http\Controllers\SalesOrderController::class, 'show'])->middleware('auth');
+    Route::get('/new',[App\Http\Controllers\SalesOrderController::class, 'create'])->middleware('auth');
+    Route::post('/store',[App\Http\Controllers\SalesOrderController::class, 'store'])->middleware('auth');
+    Route::get('/edit/{id}',[App\Http\Controllers\SalesOrderController::class, 'edit'])->middleware('auth');
+    Route::post('/update',[App\Http\Controllers\SalesOrderController::class, 'update'])->middleware('auth');
+    Route::get('/delete/{id}',[App\Http\Controllers\SalesOrderController::class, 'delete'])->middleware('auth');
+});
+
+
 Route::group(['prefix' => 'user'], function() {
     Route::get('/',[App\Http\Controllers\UsersController::class, 'index'])->middleware('auth');
     Route::get('/detail/{id}',[App\Http\Controllers\UsersController::class, 'show'])->middleware('auth');

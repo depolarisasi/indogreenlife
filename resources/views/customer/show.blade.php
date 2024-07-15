@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Detail User - PT Indo Greenlife Harvest ')
+@section('title','Detail Customer - PT Indo Greenlife Harvest ')
 @section('content')
 <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
     <!--begin::Toolbar-->
@@ -47,7 +47,7 @@
                         <!--begin::Title-->
                         <h1 class="page-heading d-flex  fw-bolder fs-2 flex-column justify-content-center my-0">Detail Customer
                         <!--begin::Description-->
-                        <span class="page-desc  opacity-50 fs-6 fw-bold pt-4">Detail Customer {{$show->customer_name}} ({{$show->customer_uniqueid}})</span>
+                        <span class="page-desc  opacity-50 fs-6 fw-bold pt-4">Detail Customer {{$show->customer_title}}  {{$show->customer_name}} ({{$show->customer_uniqueid}})</span>
                         <!--end::Description--></h1>
                         <!--end::Title-->
                     </div>
@@ -82,12 +82,12 @@
                                         <!--begin::Avatar-->
                                         <!--end::Avatar-->
                                         <!--begin::Name-->
-                                        <a href="#" class="fs-3 text-gray-800 text-hover-primary fw-bold mb-3">{{$show->customer_name}}</a>
+                                        <a href="#" class="fs-3 text-gray-800 text-hover-primary fw-bold mb-3">{{$show->customer_title}} {{$show->customer_name}}</a>
                                         <!--end::Name-->
                                         <!--begin::Position-->
                                         <div class="mb-9">
                                             <!--begin::Badge-->
-                                            <div class="badge badge-lg badge-light-primary d-inline">{{$show->customer_company}}</div>
+                                           @if($show->customer_company != NULL) <div class="badge badge-lg badge-light-primary d-inline">{{$show->customer_company}}</div> @endif
                                             <!--begin::Badge-->
                                         </div>
                                         <!--end::Position-->
@@ -345,8 +345,8 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<a href="#" class="text-gray-900 fw-bold text-hover-primary mb-1 fs-6">Sant Extreanet Solution</a>
-																		<span class="text-muted fw-semibold text-muted d-block fs-7">HTML, JS, ReactJS</span>
+																		<a href="{{url('product/detail')}}" class="text-gray-900 fw-bold text-hover-primary mb-1 fs-6">Sant Extreanet Solution</a>
+
 																	</div>
 																</div>
 															</td>
@@ -367,7 +367,7 @@
                                                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
                                                                         <!--begin::Menu item-->
                                                                         <div class="menu-item px-3">
-                                                                            <a href="#" class="menu-link px-3">Detail</a>
+                                                                            <a href="{{url('product/detail')}}" class="menu-link px-3">Detail</a>
                                                                         </div>
                                                                         <!--end::Menu item-->
                                                                         <!--begin::Menu item-->
@@ -389,7 +389,7 @@
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
 																		<a href="#" class="text-gray-900 fw-bold text-hover-primary mb-1 fs-6">Sant Extreanet Solution</a>
-																		<span class="text-muted fw-semibold text-muted d-block fs-7">HTML, JS, ReactJS</span>
+
 																	</div>
 																</div>
 															</td>
@@ -432,7 +432,7 @@
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
 																		<a href="#" class="text-gray-900 fw-bold text-hover-primary mb-1 fs-6">Sant Extreanet Solution</a>
-																		<span class="text-muted fw-semibold text-muted d-block fs-7">HTML, JS, ReactJS</span>
+
 																	</div>
 																</div>
 															</td>
@@ -475,7 +475,7 @@
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
 																		<a href="#" class="text-gray-900 fw-bold text-hover-primary mb-1 fs-6">Sant Extreanet Solution</a>
-																		<span class="text-muted fw-semibold text-muted d-block fs-7">HTML, JS, ReactJS</span>
+
 																	</div>
 																</div>
 															</td>
@@ -518,7 +518,7 @@
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
 																		<a href="#" class="text-gray-900 fw-bold text-hover-primary mb-1 fs-6">Sant Extreanet Solution</a>
-																		<span class="text-muted fw-semibold text-muted d-block fs-7">HTML, JS, ReactJS</span>
+
 																	</div>
 																</div>
 															</td>
