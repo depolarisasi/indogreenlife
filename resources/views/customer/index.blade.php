@@ -14,7 +14,7 @@
                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold">
                         <!--begin::Item-->
                         <li class="breadcrumb-item fw-bold lh-1">
-                            <a href="{{url('/')}}" class= text-hover-primary">
+                            <a href="{{url('/')}}" class="text-hover-primary>
                                 <i class="ki-outline ki-home fs-3"></i>
                             </a>
                         </li>
