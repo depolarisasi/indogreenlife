@@ -6,16 +6,36 @@ var KTUsersList = function() {
         init: function() {
             o && (o.querySelectorAll("tbody tr").forEach((e => {
                 const t = e.querySelectorAll("td")
-                 
+
             })), (e = $(o).DataTable({
-                dom : '<"d-flex align-items-center position-relative mt-3"l>rt<"bottom"ip><"clear">',
+                dom : '<"d-flex align-items-center justify-content-between"Bl>rt<"bottom"ip><"clear">',
                 info: !1,
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7]
+                        }
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                        }
+                    },
+                ],
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                     orderable: false,
                     searchable: false,
                     targets: 4
-                }, 
+                },
                 {
                     searchable: false,
                     orderable: false,

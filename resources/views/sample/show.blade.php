@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Detail Product - PT Indo Greenlife Harvest ')
+@section('title','Detail Sample - PT Indo Greenlife Harvest ')
 @section('content')
 <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
     <!--begin::Toolbar-->
@@ -22,8 +22,8 @@
                             <i class="ki-outline ki-right fs-4  mx-n1"></i>
                         </li>
                         <li class="breadcrumb-item  fw-bold lh-1">
-                            <a href="{{url('product')}}" class=" text-hover-primary">
-                                Product
+                            <a href="{{url('sample')}}" class=" text-hover-primary">
+                                Sample
                             </a>
                         </li>
 
@@ -34,7 +34,7 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item  fw-bold lh-1">Detail Product</li>
+                        <li class="breadcrumb-item  fw-bold lh-1">Detail Sample</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
@@ -45,9 +45,9 @@
                     <!--begin::Page title-->
                     <div class="page-title d-flex align-items-center me-3">
                         <!--begin::Title-->
-                        <h1 class="page-heading d-flex  fw-bolder fs-2 flex-column justify-content-center my-0">Detail Product
+                        <h1 class="page-heading d-flex  fw-bolder fs-2 flex-column justify-content-center my-0">Detail Sample
                         <!--begin::Description-->
-                        <span class="page-desc  opacity-50 fs-6 fw-bold pt-4">Detail Product</span>
+                        <span class="page-desc  opacity-50 fs-6 fw-bold pt-4">Detail Sample</span>
                         <!--end::Description--></h1>
                         <!--end::Title-->
                     </div>
@@ -77,12 +77,12 @@
                                 <div class="card-header">
                                     <!--begin::Card title-->
                                     <div class="card-title">
-                                        <h2 class="fw-bold">Product Details</h2>
+                                        <h2 class="fw-bold">Sample Details</h2>
                                     </div>
                                     <!--begin::Card title-->
                                     <!--begin::Card toolbar-->
                                     <div class="card-toolbar">
-                                        <a href="#" class="btn btn-light-primary">Update Product</a>
+                                        <a href="#" class="btn btn-light-primary">Update Sample</a>
                                     </div>
                                     <!--end::Card toolbar-->
                                 </div>
@@ -107,8 +107,8 @@
                                                     <!--end::Row-->
                                                     <!--begin::Row-->
                                                     <tr>
-                                                        <td class="text-gray-500">Nama BPOM:</td>
-                                                        <td class="text-gray-800">Black Coffe Gadjah</td>
+                                                        <td class="text-gray-500">Kode Sample:</td>
+                                                        <td class="text-gray-800">IG Sample #23232</td>
                                                     </tr>
                                                     <!--end::Row-->
                                                     <!--begin::Row-->
@@ -136,6 +136,10 @@
                                                     <!--end::Row-->
                                                     <!--begin::Row-->
                                                     <tr>
+                                                        <td class="text-gray-500">Status Sample:</td>
+                                                        <td class="text-gray-800"><span class="badge badge-danger fw-bold">Draft</span></td>
+                                                    </tr>
+                                                    <tr>
                                                         <td class="text-gray-500">Tanggal Input :</td>
                                                         <td class="text-gray-800">02 Januari 2024 21:09</td>
                                                     </tr>
@@ -157,7 +161,7 @@
                                     <!--begin::Section-->
                                     <div class="mb-0">
                                         <!--begin::Title-->
-                                        <h5 class="mb-4">Sample Products:</h5>
+                                        <h5 class="mb-4">Sample Material & Composition:</h5>
                                         <!--end::Title-->
                                         <div class="table-responsive">
                                             <!--begin::Table-->
@@ -165,12 +169,12 @@
                                                 <!--begin::Table head-->
                                                 <thead>
                                                     <tr class="fw-bold text-muted bg-light">
-                                                        <th class="min-w-125px">Product</th>
-                                                        <th>Size Per Sachet (Gr)</th>
-                                                        <th>Cost Per Sachet (Rp)</th>
-                                                        <th>Sample</th>
-                                                        <th>Final Sample</th>
-                                                        <th>Aksi</th>
+                                                        <th class="min-w-125px">Raw Material</th>
+                                                        <th>Unit Price per Kg</th>
+                                                        <th>Percentage (%)</th>
+                                                        <th>Gram per Sachet</th>
+                                                        <th>Cost per Sachet</th>
+                                                        <th>Cost per Kg</th>
                                                     </tr>
                                                 </thead>
                                                 <!--end::Table head-->
@@ -180,100 +184,36 @@
                                                         <td>
                                                             <div class="d-flex align-items-center">
                                                                 <div class="d-flex justify-content-start flex-column">
-                                                                    <a href="{{url('sample/detail')}}" class="text-gray-900 fw-bold text-hover-primary mb-1 fs-6">IG Sample #0023</a>
+                                                                    <a href="{{url('product/detail')}}" class="text-gray-900 fw-bold text-hover-primary mb-1 fs-6">ABAS32 - Black Coffee Extract 60%</a>
 
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td>
-                                                            <a href="#" class="text-gray-900 fw-bold text-hover-primary d-block mb-1 fs-6">500</a>
-                                                        </td>
-                                                        <td>
-                                                            <a href="#" class="text-gray-900 fw-bold text-hover-primary d-block mb-1 fs-6">1.250</a>
-                                                        </td>
-                                                        <td>
-                                                            <span><i class="ki-outline ki-double-check-circle fs-3 text-success"></i></span>
-                                                        </td>
-                                                        <td>
-                                                            <span><i class="ki-outline ki-check-circle fs-3 text-success"></i></span>
-                                                        </td>
-
-                                                        <td>
-                                                            <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Aksi
-                                                                <i class="ki-outline ki-down fs-5 ms-1"></i></a>
-                                                                <!--begin::Menu-->
-                                                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-                                                                    <!--begin::Menu item-->
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{url('sample/detail')}}" class="menu-link px-3">Detail</a>
-                                                                    </div>
-                                                                    <!--end::Menu item-->
-                                                                    <!--begin::Menu item-->
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="#" class="menu-link px-3">Edit</a>
-                                                                    </div>
-                                                                    <!--end::Menu item-->
-                                                                    <!--begin::Menu item-->
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="#" class="menu-link px-3">Delete</a>
-                                                                    </div>
-                                                                    <!--end::Menu item-->
-                                                                </div>
-                                                                <!--end::Menu-->
-                                                        </td>
+                                                        <td> 700.000 </td>
+                                                        <td>100</td>
+                                                        <td>40</td>
+                                                        <td>35,000</td>
+                                                        <td>16,000</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="d-flex justify-content-start flex-column">
-                                                                    <a href="{{url('sample/detail')}}" class="text-gray-900 fw-bold text-hover-primary mb-1 fs-6">IG Sample #0023</a>
-
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <a href="#" class="text-gray-900 fw-bold text-hover-primary d-block mb-1 fs-6">500</a>
-                                                        </td>
-                                                        <td>
-                                                            <a href="#" class="text-gray-900 fw-bold text-hover-primary d-block mb-1 fs-6">1.250</a>
-                                                        </td>
-                                                        <td>
-                                                            <span><i class="ki-outline ki-double-check-circle fs-3 text-success"></i></span>
-                                                        </td>
-                                                        <td>
-                                                            <span><i class="ki-outline ki-cross-circle fs-3 text-danger"></i></span>
-                                                        </td>
-
-                                                        <td>
-                                                            <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Aksi
-                                                                <i class="ki-outline ki-down fs-5 ms-1"></i></a>
-                                                                <!--begin::Menu-->
-                                                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-                                                                    <!--begin::Menu item-->
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="{{url('sample/detail')}}" class="menu-link px-3">Detail</a>
-                                                                    </div>
-                                                                    <!--end::Menu item-->
-                                                                    <!--begin::Menu item-->
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="#" class="menu-link px-3">Edit</a>
-                                                                    </div>
-                                                                    <!--end::Menu item-->
-                                                                    <!--begin::Menu item-->
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="#" class="menu-link px-3">Delete</a>
-                                                                    </div>
-                                                                    <!--end::Menu item-->
-                                                                </div>
-                                                                <!--end::Menu-->
-                                                        </td>
-                                                    </tr>
-
                                                 </tbody>
+                                                <!--end::Table body-->
+                                                <tfoot>
+                                                    <tr class="fw-bold text-muted bg-light">
+                                                        <td colspan="2"><strong>TOTAL</strong></td>
+                                                        <td><strong>100</strong></td>
+                                                        <td><strong>40</strong></td>
+                                                        <td><strong>35,000</strong></td>
+                                                        <td><strong>16,000</strong></td>
+
+                                                    </tr>
+                                                </tfoot>
                                                 <!--end::Table body-->
                                             </table>
                                             <!--end::Table-->
                                         </div>
+<br>
+                                        <h5 class="mb-4">Notes:</h5>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio officia fugiat quis repellat dignissimos necessitatibus saepe molestias voluptate provident ab. Sequi veniam ut eius, fuga excepturi odit necessitatibus nostrum distinctio.</p>
                                     </div>
                                     <!--end::Section-->
                                 </div>

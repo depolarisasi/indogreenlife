@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Customer - PT Indo Greenlife Harvest ')
+@section('title','Sample - PT Indo Greenlife Harvest ')
 @section('content')
 <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
     <!--begin::Toolbar-->
@@ -14,7 +14,7 @@
                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold">
                         <!--begin::Item-->
                         <li class="breadcrumb-item fw-bold lh-1">
-                            <a href="{{url('/')}}" class="text-hover-primary>
+                            <a href="{{url('/')}}" class="text-hover-primary">
                                 <i class="ki-outline ki-home fs-3"></i>
                             </a>
                         </li>
@@ -25,7 +25,7 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item fw-bold lh-1">Customer</li>
+                        <li class="breadcrumb-item fw-bold lh-1">Sample</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
@@ -36,7 +36,7 @@
                     <!--begin::Page title-->
                     <div class="page-title d-flex align-items-center me-3">
                         <!--begin::Title-->
-                        <h1 class="page-heading d-flex fw-bolder fs-2 flex-column justify-content-center my-0">Customer
+                        <h1 class="page-heading d-flex fw-bolder fs-2 flex-column justify-content-center my-0">Sample
                         <!--begin::Description-->
                         <!--end::Description--></h1>
                         <!--end::Title-->
@@ -60,24 +60,7 @@
                     <!--begin::Content-->
                     <div id="kt_app_content" class="app-content">
                         <!--begin::Card-->
-                        @if(count($customer) == 0)
-                            <div class="card-px text-center py-20 my-10">
-            <!--begin::Title-->
-            <h2 class="fs-2x fw-bold mb-10">Customer</h2>
-            <!--end::Title-->
 
-            <!--begin::Description-->
-            <p class="text-gray-500 fs-4 fw-semibold mb-10">
-                Belum Ada Customer.<br>
-                Silahkan Lakukan Penambahan Customer
-            </p>
-            <!--end::Description-->
-
-            <!--begin::Action-->
-            <a href="{{url('customer/new')}}" class="btn btn-primary" >Add Customer</a>
-            <!--end::Action-->
-        </div>
-            @else
                         <div class="card">
 
                             <!--begin::Card header-->
@@ -113,7 +96,7 @@
                                             <div class="px-7 py-5" data-kt-user-table-filter="form">
                                                 <!--begin::Input group-->
                                                 <div class="mb-10">
-                                                    <label class="form-label fs-6 fw-semibold">Type Customer:</label>
+                                                    <label class="form-label fs-6 fw-semibold">Type Product:</label>
                                                     <select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="type" data-hide-search="true">
                                                         <option></option>
                                                         <option value="Perusahaan">Perusahaan</option>
@@ -126,9 +109,9 @@
                                                     <label class="form-label fs-6 fw-semibold">Sales:</label>
                                                     <select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="sales" data-hide-search="true">
                                                         <option></option>
-                                                        @foreach($user as $u)
-                                                        <option value="{{$u->name}}">{{$u->name}}</option>
-                                                        @endforeach
+                                                        <option value="Perusahaan">Perusahaan</option>
+                                                        <option value="Perorangan">Perorangan</option>
+
                                                     </select>
                                                 </div>
                                                 <!--end::Input group-->
@@ -143,9 +126,10 @@
                                         </div>
                                         <!--end::Menu 1-->
                                         <!--end::Filter-->
+
                                         <!--begin::Add user-->
-                                        <a href="{{url('customer/new')}}" class="btn btn-primary">
-                                        <i class="ki-outline ki-plus fs-2"></i>Tambah Customer</a>
+                                        <a href="{{url('sample/new')}}" class="btn btn-primary">
+                                        <i class="ki-outline ki-plus fs-2"></i>Tambah Sample</a>
                                         <!--end::Add user-->
                                     </div>
                                     <!--end::Toolbar-->
@@ -158,72 +142,31 @@
                                 <!--begin::Table-->
                                 <div class="table-responsive">
 
-                                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+                                <table class="table align-middle table-row-dashed fs-6 gy-5" id="table_sample">
                                     <thead>
                                         <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                                            <th class="min-w-125px">Company</th>
-                                            <th class="min-w-125px">Personal</th>
-                                            <th>Type</th>
-                                            <th>Sales</th>
-                                            <th>Date Added</th>
-                                            <th>Detail</th>
+                                            <th class="min-w-125px">Produk</th>
+                                            <th class="min-w-125px">Kode</th>
+                                            <th>Cost Per Sachet</th>
+                                            <th>Cost Per Kg</th>
+                                            <th>Status</th>
+                                            <th>Customer</th>
+                                            <th>Dibuat Tanggal</th>
                                             <th class="text-end min-w-100px">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-gray-600 fw-semibold">
-                                        @foreach($customer as $c)
-                                        <tr>
-                                            <td class="d-flex align-items-center">
 
-                                                <!--begin::User details-->
-                                                <div class="d-flex flex-column">
-                                                    <a href="{{url('customer/detail/'.$c->customer_uniqueid)}}">{{$c->customer_company}}</a>
-                                                    <span>{{$c->customer_companytelp}}</span>
-                                                    <span>{{$c->customer_companyemail}}</span>
-                                                    <span>{{$c->customer_companyaddress}}</span>
-                                                    <span>@if($c->customer_companynib != NULL)
-                                                        NIB {{$c->customer_companynib}}
-                                                    @endif</span>
-                                                    <span>@if($c->customer_companynpwp != NULL)
-                                                        NPWP {{$c->customer_companynpwp}}
-                                                        @endif
-                                                        @if($c->customer_companytax == "PKP")
-                                                        <span class="badge badge-info fw-bold">PKP</span>
-                                                    @elseif($c->customer_companytax == "NON PKP")
-                                                    <span class="badge badge-info fw-bold">NON PKP</span>
-                                                @endif</span>
-                                                </div>
-                                                <!--begin::User details-->
+                                        <tr>
+                                            <td><a href="{{url('product/detail')}}">Minuman Serbuk Pelangsing Alamiah Herbal Milluner</a></td>
+                                            <td>IG Sample #523434</td>
+                                            <td>12,905.069</td>
+                                            <td>12,905.069</td>
+                                            <td>
+                                                <span class="badge badge-primary fw-bold">Selesai</span>
                                             </td>
-                                            <td>
-                                                <!--begin::User details-->
-                                                <div class="d-flex flex-column">
-                                                   <a href="{{url('customer/detail/'.$c->customer_uniqueid)}}">{{$c->customer_name}}</a> ({{$c->customer_uniqueid}})
-                                                    <span>{{$c->customer_nohp}}</span>
-                                                    <span>{{$c->customer_email}}</span>
-                                                    <span>{{$c->customer_address}}</span>
-                                                    <span>@if($c->customer_npwp != NULL)
-                                                        NPWP {{$c->customer_npwp}} @endif</span>
-                                                </div>
-                                                <!--begin::User details-->
-                                            </td>
-                                            <td>@if($c->customer_type == "Perusahaan" )
-                                                <span class="badge badge-info fw-bold">Perusahaan</span>
-                                            @elseif($c->customer_type == "Perorangan")
-                                            <span class="badge badge-primary fw-bold">Perorangan</span>
-                                            @endif
-                                        </td>
-                                            <td>
-                                                <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" aria-label="{{$c->name}}" data-bs-original-title="{{$c->name}}" data-kt-initialized="1">
-                                                <img alt="Pic" src="{{$c->foto}}">
-                                            </div><br>
-                                            <a href="{{url('user/detail/'.$c->id)}}" class="text-gray-800 text-hover-primary mb-1">{{$c->name}}</a></td>
-                                            <td>{{\Carbon\Carbon::parse($c->customer_dateadded)->format('d M Y H:i')}}</td>
-                                            <td>
-                                                <a href="{{url('customer/detail/')}}" class="btn btn-xs btn-primary"><i class="bi bi-info-circle"></i> Product</a>
-                                                <a href="{{url('customer/edit/')}}" class="btn btn-xs btn-warning"><i class="bi bi-info-circle"></i> Request Sample</a>
-                                                <a href="{{url('customer/edit/')}}" class="btn btn-xs btn-danger"><i class="bi bi-info-circle"></i> Sales Order</a>
-                                           </td>
+                                            <td><a href="#">John Connor (PT Infinix Sehat Sejati)</a></td>
+                                            <td>{{\Carbon\Carbon::now()->format('d M Y H:i')}}</td>
                                            <td class="text-end">
                                                 <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Aksi
                                                 <i class="ki-outline ki-down fs-5 ms-1"></i></a>
@@ -231,24 +174,23 @@
                                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a href="{{url('customer/detail/'.$c->customer_uniqueid)}}" class="menu-link px-3">Detail</a>
+                                                        <a href="{{url('product/detail')}}" class="menu-link px-3">Detail</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a href="{{url('customer/edit/'.$c->customer_uniqueid)}}" class="menu-link px-3">Edit</a>
+                                                        <a href="#" class="menu-link px-3">Edit</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a href="{{url('customer/delete/'.$c->customer_uniqueid)}}" class="menu-link px-3">Delete</a>
+                                                        <a href="#" class="menu-link px-3">Delete</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                 </div>
                                                 <!--end::Menu-->
                                             </td>
                                         </tr>
-                                        @endforeach
 
                                     </tbody>
                                 </table>
@@ -256,7 +198,6 @@
                                 </div>
                             </div>
                             <!--end::Card body-->
-                            @endif
                         </div>
                         <!--end::Card-->
                     </div>
@@ -273,6 +214,70 @@
 @endsection
 @section('js')
 		<!--begin::Custom Javascript(used for this page only)-->
-		<script src="{{asset('assets/js/customer/table.js')}}"></script>
+		<script>
+            var KTUsersList = function() {
+                var e, t, n, r, o = document.getElementById("table_sample")
+
+                return {
+                    init: function() {
+                        o && (o.querySelectorAll("tbody tr").forEach((e => {
+                            const t = e.querySelectorAll("td")
+
+                        })), (e = $(o).DataTable({
+                            dom : '<"d-flex align-items-center justify-content-between"Bl>rt<"bottom"ip><"clear">',
+                            info: !1,
+                            buttons: [
+                                {
+                                    extend: 'excelHtml5',
+                                    exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+                                    }
+                                },
+                                {
+                                    extend: 'pdfHtml5',
+                                    exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6]
+                                    }
+                                },
+                                {
+                                    extend: 'csvHtml5',
+                                    exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+                                    }
+                                },
+                            ],
+                            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                            columnDefs: [
+                            {
+                                searchable: false,
+                                orderable: false,
+                                targets: 7
+                            }],
+                            order: [[6, 'desc']]
+                        })).on("draw", (function() {
+                        })),  document.querySelector('[data-kt-user-table-filter="search"]').addEventListener("keyup", (function(t) {
+                            e.search(t.target.value).draw()
+                        })), document.querySelector('[data-kt-user-table-filter="reset"]').addEventListener("click", (function() {
+                            document.querySelector('[data-kt-user-table-filter="form"]').querySelectorAll("select").forEach((e => {
+                                $(e).val("").trigger("change")
+                            })), e.search("").draw()
+                        })), (() => {
+                            const t = document.querySelector('[data-kt-user-table-filter="form"]'),
+                                n = t.querySelector('[data-kt-user-table-filter="filter"]'),
+                                r = t.querySelectorAll("select");
+                            n.addEventListener("click", (function() {
+                                var t = "";
+                                r.forEach(((e, n) => {
+                                    e.value && "" !== e.value && (0 !== n && (t += " "), t += e.value)
+                                })), e.search(t).draw()
+                            }))
+                        })())
+                    }
+                }
+            }();
+            KTUtil.onDOMContentLoaded((function() {
+                KTUsersList.init()
+            }));
+            </script>
 		<script src="{{asset('assets/js/custom/apps/user-management/users/list/export-users.js')}}"></script>
 @endsection
