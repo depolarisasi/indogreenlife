@@ -55,6 +55,7 @@ Route::group(['prefix' => 'sample'], function() {
 Route::group(['prefix' => 'sales-order'], function() {
     Route::get('/',[App\Http\Controllers\SalesOrderController::class, 'index'])->middleware('auth');
     Route::get('/detail/',[App\Http\Controllers\SalesOrderController::class, 'show'])->middleware('auth');
+    Route::get('/detail-product/',[App\Http\Controllers\SalesOrderController::class, 'showproduct'])->middleware('auth');
     Route::get('/new',[App\Http\Controllers\SalesOrderController::class, 'create'])->middleware('auth');
     Route::post('/store',[App\Http\Controllers\SalesOrderController::class, 'store'])->middleware('auth');
     Route::get('/edit/{id}',[App\Http\Controllers\SalesOrderController::class, 'edit'])->middleware('auth');
