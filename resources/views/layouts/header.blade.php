@@ -243,58 +243,7 @@
 
                     </a>
                     <!--end:Menu item-->
-                         <!--begin:Menu item-->
-                         <a href="{{url('sales-order')}}" class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
-                            <!--begin:Menu link-->
-                            <span class="menu-link">
-                                <span class="menu-title">Sales Order</span>
-                                <span class="menu-arrow d-lg-none"></span>
-                            </span>
-                            <!--end:Menu link-->
 
-                        </a>
-                        <!--end:Menu item-->
-                     <!--begin:Menu item-->
-                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
-                        <!--begin:Menu link-->
-                        <span class="menu-link">
-                            <span class="menu-title">Produk</span>
-                            <span class="menu-arrow d-lg-none"></span>
-                        </span>
-                        <!--end:Menu link-->
-                        <!--begin:Menu sub-->
-                        <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-250px">
-
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="{{url('sample')}}">
-                                    <span class="menu-icon">
-                                        <i class="ki-outline ki-calendar-8 fs-2"></i>
-                                    </span>
-                                    <span class="menu-title">Sample</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                             <!--begin:Menu item-->
-                             <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="{{url('product/')}}">
-                                    <span class="menu-icon">
-                                        <i class="ki-outline ki-calendar-8 fs-2"></i>
-                                    </span>
-                                    <span class="menu-title">Produk</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-
-
-                        </div>
-                        <!--end:Menu sub-->
-                    </div>
-                    <!--end:Menu item-->
                     <!--begin:Menu item-->
                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
                         <!--begin:Menu link-->
@@ -309,11 +258,11 @@
                              <!--begin:Menu item-->
                              <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="{{url('purchase-order')}}">
+                                <a class="menu-link" href="{{url('sales-order')}}">
                                     <span class="menu-icon">
                                         <i class="ki-outline ki-calendar-8 fs-2"></i>
                                     </span>
-                                    <span class="menu-title">Purchase Order</span>
+                                    <span class="menu-title">Sales Order</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
