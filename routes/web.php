@@ -32,6 +32,18 @@ Route::group(['prefix' => 'customer'], function() {
     Route::get('/delete/{id}',[App\Http\Controllers\CustomerController::class, 'delete'])->middleware('auth');
 });
 
+Route::group(['prefix' => 'customer-portal'], function() {
+    Route::get('/',[App\Http\Controllers\CustomerPortalController::class, 'login'])->middleware('auth');
+    Route::get('/dashboard',[App\Http\Controllers\CustomerPortalController::class, 'index'])->middleware('auth');
+    Route::get('/detail-so/',[App\Http\Controllers\CustomerPortalController::class, 'detailso'])->middleware('auth');
+    Route::get('/detail-po',[App\Http\Controllers\CustomerPortalController::class, 'detailpo'])->middleware('auth');
+    Route::post('/store',[App\Http\Controllers\CustomerPortalController::class, 'store'])->middleware('auth');
+    Route::get('/edit/',[App\Http\Controllers\CustomerPortalController::class, 'edit'])->middleware('auth');
+    Route::post('/update',[App\Http\Controllers\CustomerPortalController::class, 'update'])->middleware('auth');
+    Route::get('/delete/',[App\Http\Controllers\CustomerPortalController::class, 'delete'])->middleware('auth');
+});
+
+
 Route::group(['prefix' => 'product'], function() {
     Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->middleware('auth');
     Route::get('/detail/',[App\Http\Controllers\ProductController::class, 'show'])->middleware('auth');
